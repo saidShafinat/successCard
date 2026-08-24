@@ -1,0 +1,695 @@
+/* ========================================
+   RESET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #050914;
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* ========================================
+   OPENING SCREEN
+======================================== */
+
+.opening-screen {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(212, 175, 55, 0.13),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(59, 130, 246, 0.14),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(139, 92, 246, 0.12),
+            transparent 30%
+        ),
+        #050914;
+}
+
+
+/* ========================================
+   BACKGROUND GLOW
+======================================== */
+
+.opening-screen::before,
+.card-screen::before {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: rgba(212, 175, 55, 0.04);
+
+    box-shadow:
+        0 0 150px rgba(212, 175, 55, 0.08);
+
+    animation: pulseGlow 6s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   INTRO
+======================================== */
+
+.intro {
+    position: relative;
+
+    z-index: 5;
+
+    text-align: center;
+
+    animation: fadeIn 1.5s ease;
+}
+
+
+.small-heading {
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 6px;
+
+    color: #d4af37;
+
+    margin-bottom: 20px;
+
+    text-transform: uppercase;
+}
+
+
+.intro h1 {
+    font-size: 78px;
+
+    font-weight: normal;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 15px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #d4af37,
+            #ffffff
+        );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    background-size: 200% auto;
+
+    animation: goldShimmer 4s linear infinite;
+}
+
+
+.subtitle {
+    font-family: Arial, sans-serif;
+
+    color: #aeb9ce;
+
+    font-size: 16px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 40px;
+}
+
+
+/* ========================================
+   ENVELOPE
+======================================== */
+
+.envelope-container {
+    display: flex;
+
+    justify-content: center;
+
+    margin: 25px 0 30px;
+}
+
+
+.envelope {
+    width: 190px;
+    height: 125px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    filter:
+        drop-shadow(
+            0 20px 35px rgba(0, 0, 0, 0.55)
+        );
+
+    animation: floatingEnvelope 3s ease-in-out infinite;
+}
+
+
+.envelope-body {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 190px;
+    height: 125px;
+
+    border-radius: 6px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e9cd70,
+            #b78b20
+        );
+
+    overflow: hidden;
+}
+
+
+.envelope-body::before {
+    content: "";
+
+    position: absolute;
+
+    width: 135px;
+    height: 135px;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    transform: rotate(45deg);
+
+    top: 45px;
+    left: -45px;
+}
+
+
+.envelope-body::after {
+    content: "";
+
+    position: absolute;
+
+    width: 135px;
+    height: 135px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    transform: rotate(45deg);
+
+    top: 45px;
+    right: -45px;
+}
+
+
+.envelope-flap {
+    position: absolute;
+
+    top: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 95px solid transparent;
+    border-right: 95px solid transparent;
+
+    border-top: 70px solid #f1d67c;
+
+    z-index: 3;
+
+    transform-origin: top center;
+
+    transition: transform 0.8s ease;
+}
+
+
+.heart {
+    position: absolute;
+
+    z-index: 5;
+
+    left: 50%;
+    top: 55%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 38px;
+
+    color: white;
+
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+
+/* ========================================
+   INSTRUCTION
+======================================== */
+
+.instruction {
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    color: #7f8ca5;
+
+    margin-bottom: 22px;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* ========================================
+   BUTTON
+======================================== */
+
+button {
+    position: relative;
+
+    padding: 15px 32px;
+
+    border: 1px solid rgba(212, 175, 55, 0.8);
+
+    border-radius: 50px;
+
+    background: rgba(212, 175, 55, 0.04);
+
+    color: #e5c75d;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+button:hover {
+    background: #d4af37;
+
+    color: #050914;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 35px rgba(212, 175, 55, 0.3);
+}
+
+
+button:active {
+    transform: translateY(-1px);
+}
+
+
+/* ========================================
+   STARS
+======================================== */
+
+.stars span {
+    position: absolute;
+
+    color: #f1d67c;
+
+    opacity: 0.4;
+
+    z-index: 1;
+
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+
+.stars span:nth-child(1) {
+    top: 12%;
+    left: 14%;
+    font-size: 20px;
+}
+
+
+.stars span:nth-child(2) {
+    top: 24%;
+    right: 17%;
+    font-size: 13px;
+    animation-delay: 1s;
+}
+
+
+.stars span:nth-child(3) {
+    bottom: 18%;
+    left: 21%;
+    font-size: 15px;
+    animation-delay: 0.5s;
+}
+
+
+.stars span:nth-child(4) {
+    bottom: 27%;
+    right: 14%;
+    font-size: 21px;
+    animation-delay: 1.5s;
+}
+
+
+.stars span:nth-child(5) {
+    top: 13%;
+    right: 40%;
+    font-size: 10px;
+    animation-delay: 2s;
+}
+
+
+/* ========================================
+   CARD SCREEN
+======================================== */
+
+.card-screen {
+    min-height: 100vh;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 40px;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(212, 175, 55, 0.12),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(59, 130, 246, 0.13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(139, 92, 246, 0.12),
+            transparent 30%
+        ),
+        #050914;
+}
+
+
+/* ========================================
+   CARD
+======================================== */
+
+.card {
+    width: min(650px, 90%);
+
+    position: relative;
+
+    z-index: 5;
+
+    padding: 75px 60px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25, 35, 57, 0.98),
+            rgba(10, 17, 32, 0.98)
+        );
+
+    border: 1px solid rgba(212, 175, 55, 0.6);
+
+    box-shadow:
+        0 35px 90px rgba(0, 0, 0, 0.7),
+        0 0 70px rgba(212, 175, 55, 0.08);
+
+    animation: cardAppear 1s ease;
+}
+
+
+/* INNER BORDER */
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 12px;
+
+    border: 1px solid rgba(212, 175, 55, 0.18);
+
+    pointer-events: none;
+}
+
+
+/* DECORATIVE CORNERS */
+
+.card::after {
+    content: "✦";
+
+    position: absolute;
+
+    top: 20px;
+    right: 25px;
+
+    color: #d4af37;
+
+    font-size: 18px;
+}
+
+
+.card > p:first-child {
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 6px;
+
+    color: #d4af37;
+
+    margin-bottom: 28px;
+
+    text-transform: uppercase;
+}
+
+
+.card h2 {
+    font-size: 52px;
+
+    font-weight: normal;
+
+    letter-spacing: 5px;
+
+    color: #f4df91;
+
+    margin-bottom: 10px;
+}
+
+
+.line {
+    width: 90px;
+
+    height: 1px;
+
+    margin: 25px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d4af37,
+            transparent
+        );
+}
+
+
+.card-message {
+    font-family: Arial, sans-serif;
+
+    font-size: 16px;
+
+    line-height: 1.9;
+
+    color: #c7d0df;
+}
+
+
+.card-message strong {
+    color: #f2d36c;
+
+    font-weight: 600;
+}
+
+
+.card-message em {
+    color: #e3bfc8;
+}
+
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes floatingEnvelope {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-14px);
+    }
+
+}
+
+
+@keyframes twinkle {
+
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+
+}
+
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+}
+
+
+@keyframes pulseGlow {
+
+    0%, 100% {
+        transform: scale(1);
+
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.2);
+
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes goldShimmer {
+
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .intro h1 {
+        font-size: 52px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .envelope {
+        transform: scale(0.85);
+    }
+
+    .card {
+        width: 94%;
+
+        padding: 60px 28px;
+    }
+
+    .card h2 {
+        font-size: 36px;
+
+        letter-spacing: 3px;
+    }
+
+    .card-message {
+        font-size: 14px;
+    }
+
+}
